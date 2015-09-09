@@ -12,15 +12,15 @@ def merge(line):
     iter_i = 0
     while iter_i < len(mid_line):
         item_a = mid_line[iter_i]
-        if iter_i == len(mid_line)-1:
+        if iter_i == len(mid_line) - 1:
             res_line.append(item_a)
             break
-        item_b = mid_line[iter_i+1]
+        item_b = mid_line[iter_i + 1]
         if item_a == item_b:
-            res_line.append(item_a+item_b)
+            res_line.append(item_a + item_b)
             iter_i += 2
         else:
             res_line.append(item_a)
             iter_i += 1
-    res_line.extend([0]*(len(line)-len(res_line)))
+    res_line.extend([0] * (len(line) - len(res_line)))
     return res_line

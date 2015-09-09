@@ -18,6 +18,7 @@ OFFSETS = {UP: (1, 0),
            LEFT: (0, 1),
            RIGHT: (0, -1)}
 
+
 def merge(line):
     """
     Helper function that merges a single row or column in 2048
@@ -27,20 +28,21 @@ def merge(line):
     iter_i = 0
     while iter_i < len(mid_line):
         item_a = mid_line[iter_i]
-        if iter_i == len(mid_line)-1:
+        if iter_i == len(mid_line) - 1:
             res_line.append(item_a)
             break
-        item_b = mid_line[iter_i+1]
+        item_b = mid_line[iter_i + 1]
         if item_a == item_b:
-            res_line.append(item_a+item_b)
+            res_line.append(item_a + item_b)
             iter_i += 2
         else:
             res_line.append(item_a)
             iter_i += 1
-    res_line.extend([0]*(len(line)-len(res_line)))
+    res_line.extend([0] * (len(line) - len(res_line)))
     return res_line
 
-class TwentyFortyEight:
+
+class TwentyFortyEight(object):
     """
     Class to run the game logic.
     """
@@ -52,19 +54,19 @@ class TwentyFortyEight:
         self._initial_squs = {
             UP: [(0, col)
                  for col in range(grid_width)],
-            DOWN: [(grid_height-1, col)
+            DOWN: [(grid_height - 1, col)
                    for col in range(grid_width)],
             LEFT: [(row, 0)
                    for row in range(grid_height)],
-            RIGHT: [(row, grid_width-1)
+            RIGHT: [(row, grid_width - 1)
                     for row in range(grid_height)]
-            }
+        }
         self._degrees = {
             UP: grid_height,
             DOWN: grid_height,
             LEFT: grid_width,
             RIGHT: grid_width
-            }
+        }
 
     def reset(self):
         """
@@ -72,7 +74,7 @@ class TwentyFortyEight:
         initial tiles.
         """
         self._grid = [[0 for dummy_col in range(self.get_grid_width())]
-                     for dummy_row in range(self.get_grid_height())]
+                      for dummy_row in range(self.get_grid_height())]
         self.new_tile()
         self.new_tile()
 
@@ -104,22 +106,22 @@ class TwentyFortyEight:
         off = OFFSETS[direction]
         degs = self.get_degrees(direction)
         initial_squs = self.get_initial_squs(direction)
-        squs = [[(squ[0]+off[0]*deg, squ[1]+off[1]*deg)
+        squs = [[(squ[0] + off[0] * deg, squ[1] + off[1] * deg)
                  for deg in range(degs)]
                 for squ in initial_squs]
-        tiles = [[self.get_tile(squ[0]+off[0]*deg, squ[1]+off[1]*deg)
-                 for deg in range(degs)]
-                for squ in initial_squs]
+        tiles = [[self.get_tile(squ[0] + off[0] * deg, squ[1] + off[1] * deg)
+                  for deg in range(degs)]
+                 for squ in initial_squs]
         res_tiles = [merge(line) for line in tiles]
         for row in range(len(squs)):
             for col in range(len(squs[0])):
                 if not changed:
                     if (self.get_tile(squs[row][col][0],
-                                     squs[row][col][1]) !=
-                        res_tiles[row][col]):
+                                      squs[row][col][1]) !=
+                            res_tiles[row][col]):
                         self.set_tile(squs[row][col][0],
-                              squs[row][col][1],
-                              res_tiles[row][col])
+                                      squs[row][col][1],
+                                      res_tiles[row][col])
                         changed = True
                 else:
                     self.set_tile(squs[row][col][0],
@@ -127,7 +129,6 @@ class TwentyFortyEight:
                                   res_tiles[row][col])
         if changed:
             self.new_tile()
-        
 
     def new_tile(self):
         """
@@ -135,14 +136,13 @@ class TwentyFortyEight:
         square.  The tile should be 2 90% of the time and
         4 10% of the time.
         """
-        tile_r = random.choice([2]*9+[4])
+        tile_r = random.choice([2] * 9 + [4])
         blanks = [(row, col) for col in range(self.get_grid_width())
                   for row in range(self.get_grid_height())
                   if self.get_tile(row, col) == 0]
         if len(blanks) > 0:
             squ_r = random.choice(blanks)
             self.set_tile(squ_r[0], squ_r[1], tile_r)
-        
 
     def set_tile(self, row, col, value):
         """
@@ -155,13 +155,13 @@ class TwentyFortyEight:
         Return the value of the tile at position row, col.
         """
         return self._grid[row][col]
-    
+
     def get_degrees(self, direction):
         """
         Return the degree of the given direction.
         """
         return self._degrees[direction]
-    
+
     def get_initial_squs(self, direction):
         """
         Return the initial squares of the given direction.
