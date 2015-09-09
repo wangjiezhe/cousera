@@ -42,6 +42,16 @@ def merge(line):
     return res_line
 
 
+def merge_dicts(*dict_args):
+    """
+    Merge several dicts to one dict
+    """
+    res = {}
+    for item in dict_args:
+        res.update(item)
+    return res
+
+
 class TwentyFortyEight(object):
     """
     Class to run the game logic.
@@ -112,9 +122,8 @@ class TwentyFortyEight(object):
         tiles = [[self.get_tile(squ[0] + off[0] * deg, squ[1] + off[1] * deg)
                   for deg in range(degs)]
                  for squ in initial_squs]
-        mapping = reduce(lambda dict_a, dict_b: dict(dict_a, **dict_b),
-                         [dict(zip(squs[row], merge(tiles[row])))
-                          for row in range(len(squs))])
+        mapping = merge_dicts(*[dict(zip(squs[row], merge(tiles[row])))
+                                for row in range(len(squs))])
         for key, value in mapping.iteritems():
             if not changed:
                 if self.get_tile(key[0], key[1]) != value:
