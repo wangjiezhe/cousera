@@ -112,21 +112,16 @@ class TwentyFortyEight(object):
         tiles = [[self.get_tile(squ[0] + off[0] * deg, squ[1] + off[1] * deg)
                   for deg in range(degs)]
                  for squ in initial_squs]
-        res_tiles = [merge(line) for line in tiles]
-        for row in range(len(squs)):
-            for col in range(len(squs[0])):
-                if not changed:
-                    if (self.get_tile(squs[row][col][0],
-                                      squs[row][col][1]) !=
-                            res_tiles[row][col]):
-                        self.set_tile(squs[row][col][0],
-                                      squs[row][col][1],
-                                      res_tiles[row][col])
-                        changed = True
-                else:
-                    self.set_tile(squs[row][col][0],
-                                  squs[row][col][1],
-                                  res_tiles[row][col])
+        mapping = reduce(lambda dict_a, dict_b: dict(dict_a, **dict_b),
+                         [dict(zip(squs[row], merge(tiles[row])))
+                          for row in range(len(squs))])
+        for key, value in mapping.iteritems():
+            if not changed:
+                if self.get_tile(key[0], key[1]) != value:
+                    self.set_tile(key[0], key[1], value)
+                    changed = True
+            else:
+                self.set_tile(key[0], key[1], value)
         if changed:
             self.new_tile()
 
