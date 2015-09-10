@@ -17,6 +17,6 @@ public class Test {
         StdOut.println(p + " " + q);
       }
     }
+    StdOut.println(uf.count() + " components");
   }
-
 }

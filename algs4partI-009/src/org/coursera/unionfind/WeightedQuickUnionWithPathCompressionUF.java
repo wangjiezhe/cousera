@@ -1,15 +1,18 @@
 package org.coursera.unionfind;
 
 /**
- * Weighted Quick Union
+ * Weighted Quick Union with Path Compression (WQUPC)
  *
- * Worst-case time: N + M log N,
+ * Worst-case time: N + M lg* N,
+ * where `lg*` (usually read "log star")
+ * indicates the binary iterated logarithm,
+ * for M union-find operations on a set of N objects.
  */
-public class WeightedQuickUnionUF {
+public class WeightedQuickUnionWithPathCompressionUF {
   private int[] id;  // id[i] point to the parent of i
   private int[] sz;  // Size of the Tree
 
-  public WeightedQuickUnionUF(int n) {
+  public WeightedQuickUnionWithPathCompressionUF(int n) {
     id = new int[n];
     sz = new int[n];
     for (int i = 0; i < n; i++) {
@@ -24,6 +27,7 @@ public class WeightedQuickUnionUF {
 
   public int root(int i) {
     while (i != id[i]) {
+      id[i] = id[id[i]];  // Path compression
       i = id[i];
     }
     return i;

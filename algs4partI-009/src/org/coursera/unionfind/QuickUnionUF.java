@@ -16,6 +16,10 @@ public class QuickUnionUF {
     }
   }
 
+  public int[] getId() {
+    return id;
+  }
+
   public int root(int i) {
     while (i != id[i]) {
       i = id[i];
