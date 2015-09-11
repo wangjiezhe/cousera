@@ -1,3 +1,5 @@
+package org.coursera.quiz;
+
 import edu.princeton.cs.algs4.StdOut;
 import org.coursera.unionfind.QuickFindUF;
 import org.coursera.unionfind.WeightedQuickUnionUF;
