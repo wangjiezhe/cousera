@@ -11,12 +11,12 @@ public class ThreeSum {
    * finding the situations that the sum of three integers in the array vanish.
    * runtime: N^3
    */
-  public static long count(int[] a) {
+  public static int count(int[] a) {
     int N = a.length;
-    long count = 0;
+    int count = 0;
     for (int i = 0; i < N; i++)
-      for (int j = i; j < N; j++)
-        for (int k = j; k < N; k++)
+      for (int j = i+1; j < N; j++)
+        for (int k = j+1; k < N; k++)
           if (a[i] + a[j] + a[k] == 0)
             count++;
     return count;
