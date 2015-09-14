@@ -3,3 +3,4 @@
 .ropeproject/
 *.pyc
 __pycache__/
+/reference/
