@@ -11,7 +11,7 @@
  *
  ******************************************************************************/
 
-package percolation;
+package assignment.percolation;
 
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;

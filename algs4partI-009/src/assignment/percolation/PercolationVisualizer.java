@@ -16,7 +16,7 @@
  *
  ******************************************************************************/
 
-package percolation;
+package assignment.percolation;
 
 import java.awt.Font;
 
