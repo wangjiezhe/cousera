@@ -1,8 +1,8 @@
-package org.coursera.quiz;
+package quiz;
 
 import edu.princeton.cs.algs4.StdOut;
-import org.coursera.unionfind.QuickFindUF;
-import org.coursera.unionfind.WeightedQuickUnionUF;
+import unionfind.QuickFindUF;
+import unionfind.WeightedQuickUnionUF;
 
 public class UnionFind {
   public class WQU extends WeightedQuickUnionUF {

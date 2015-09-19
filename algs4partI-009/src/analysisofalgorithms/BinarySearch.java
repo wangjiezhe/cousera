@@ -1,4 +1,4 @@
-package org.coursera.analysisofalgorithms;
+package analysisofalgorithms;
 
 public class BinarySearch {
   /**

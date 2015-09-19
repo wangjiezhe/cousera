@@ -1,4 +1,4 @@
-package org.coursera.unionfind;
+package unionfind;
 
 /**
  * Quick Union

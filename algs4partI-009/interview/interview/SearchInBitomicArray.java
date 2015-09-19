@@ -1,4 +1,4 @@
-package org.coursera.interview;
+package interview;
 
 import java.util.Arrays;
 
