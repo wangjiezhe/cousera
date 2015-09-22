@@ -1,7 +1,10 @@
 # template for "Guess the number" mini-project
 # input will come from buttons and an input field
 # all output for the game will be printed in the console
-import simplegui
+try:
+    import simplegui
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 import random
 
 desired_range = 100
@@ -44,7 +47,7 @@ def input_guess(guess):
     try:
         guess = int(guess)
         guess_number -= 1
-    except ValueError as e:
+    except ValueError:
         return
     print "Guess was %d" % guess
     if secret_number > guess:
@@ -77,11 +80,11 @@ f.add_button("Range is [0,100)", range100, 200)
 f.add_button("Range is [0,1000)", range1000, 200)
 f.add_input("Guess", input_guess, 200)
 
-# register event handlers for control elements and start frame
-f.start()
-
 # call new_game
 new_game()
+
+# register event handlers for control elements and start frame
+f.start()
 
 
 # always remember to check your completed program against the grading rubric
