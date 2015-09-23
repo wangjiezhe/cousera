@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 """
 Monte Carlo Tic-Tac-Toe Player
 """
