@@ -1,3 +1,6 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
 # template for "Stopwatch: The Game"
 try:
     import simplegui

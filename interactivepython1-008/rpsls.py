@@ -1,3 +1,6 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
 # Rock-paper-scissors-lizard-Spock template
 import random
 

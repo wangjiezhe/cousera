@@ -1,3 +1,6 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
 # Mystery computation in Python
 # Takes input n and computes output named result
 

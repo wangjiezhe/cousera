@@ -1,3 +1,6 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
 # Create a 300-by-300 canvas.
 # Draw two circles with radius 20 and white lines of
 # width 10. One is centered at (90,200) and one at (210,200).
