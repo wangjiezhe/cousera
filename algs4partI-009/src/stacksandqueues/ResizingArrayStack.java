@@ -3,7 +3,7 @@ package stacksandqueues;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ResizingArrayStack<Item> implements Iterable<Item> {
+public class ResizingArrayStack<Item> implements IStack<Item> {
   private Item[] s;
   private int N = 0;
 
@@ -12,6 +12,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     s = (Item[]) new Object[1];
   }
 
+  @Override
   public boolean isEmpty() {
     return N == 0;
   }
@@ -24,12 +25,14 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     s = copy;
   }
 
+  @Override
   public void push(Item item) {
     if (N == s.length)
       resize(2 * s.length); // repeat doubling -> amortize cost
     s[N++] = item;
   }
 
+  @Override
   public Item pop() {
     Item item = s[--N];
     s[N] = null;

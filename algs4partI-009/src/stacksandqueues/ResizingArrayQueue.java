@@ -3,7 +3,7 @@ package stacksandqueues;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ResizingArrayQueue<Item> implements Iterable<Item> {
+public class ResizingArrayQueue<Item> implements IQueue<Item> {
   private Item[] s;
   private int head = 0;
   private int tail = 0;
@@ -21,16 +21,19 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
     s = copy;
   }
 
+  @Override
   public boolean isEmpty() {
     return tail - head == 0;
   }
 
+  @Override
   public void enqueue(Item item) {
     if (tail - head == s.length)
       resize(2 * s.length);
     s[tail++ % s.length] = item;
   }
 
+  @Override
   public Item dequeue() {
     Item item = s[head % s.length];
     s[head++ % s.length] = null;

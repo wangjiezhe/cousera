@@ -3,7 +3,7 @@ package stacksandqueues;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Queue<Item> implements Iterable<Item> {
+public class Queue<Item> implements IQueue<Item> {
   private Node first = null;
   private Node last = null;
 
@@ -12,10 +12,12 @@ public class Queue<Item> implements Iterable<Item> {
     private Node next;
   }
 
+  @Override
   public boolean isEmpty() {
     return first == null;
   }
 
+  @Override
   public void enqueue(Item item) {
     Node oldlast = last;
     last = new Node();
@@ -27,6 +29,7 @@ public class Queue<Item> implements Iterable<Item> {
       oldlast.next = last;
   }
 
+  @Override
   public Item dequeue() {
     Item item = first.item;
     first = first.next;

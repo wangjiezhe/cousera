@@ -3,7 +3,7 @@ package stacksandqueues;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Stack<Item> implements Iterable<Item> {
+public class Stack<Item> implements IStack<Item> {
   private Node first = null;
 
   private class Node {
@@ -11,10 +11,12 @@ public class Stack<Item> implements Iterable<Item> {
     private Node next;
   }
 
+  @Override
   public boolean isEmpty() {
     return first == null;
   }
 
+  @Override
   public void push(Item item) {
     Node oldfirst = first;
     first = new Node();
@@ -22,6 +24,7 @@ public class Stack<Item> implements Iterable<Item> {
     first.next = oldfirst;
   }
 
+  @Override
   public Item pop() {
     Item item = first.item;
     first = first.next;

@@ -3,7 +3,7 @@ package stacksandqueues;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Bag<Item> implements Iterable<Item> {
+public class Bag<Item> implements IBag<Item> {
   private Node first = null;
   private int N = 0;
 
@@ -12,6 +12,7 @@ public class Bag<Item> implements Iterable<Item> {
     private Node next;
   }
 
+  @Override
   public void add(Item item) {
     Node oldfirst = first;
     first = new Node();
@@ -20,6 +21,7 @@ public class Bag<Item> implements Iterable<Item> {
     N++;
   }
 
+  @Override
   public int size() {
     return N;
   }
@@ -50,5 +52,10 @@ public class Bag<Item> implements Iterable<Item> {
       current = current.next;
       return item;
     }
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return first == null;
   }
 }
