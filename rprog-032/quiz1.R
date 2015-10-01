@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-hw1 <- read.csv('data/hw1_data.csv')
+hw1 <- read.csv('data/hw1_data.csv')  # datasets::airquality
 
 head(hw1, 2)
 nrow(hw1)
