@@ -18,5 +18,18 @@ public class Subset {
       if (++i == k)
         break;
     }
+    // int num = 0;
+    // while (!StdIn.isEmpty()) {
+    // String str = StdIn.readString();
+    // if (num < k) {
+    // s.enqueue(str);
+    // num++;
+    // } else {
+    // s.dequeue();
+    // s.enqueue(str);
+    // }
+    // }
+    // for (String str : s)
+    // StdOut.println(str);
   }
 }
