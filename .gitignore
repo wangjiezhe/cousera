@@ -1,3 +1,4 @@
 *~
 *.swp
 /reference/
+.ipynb_checkpoints/
