@@ -80,9 +80,9 @@ J = -1 / m * (sum((Y .* log(a3))(:)) + sum(((1 - Y) .* log(1 - a3))(:)));
 
 J += lambda / (2 * m) * (sumsq(Theta1(:,2:end)(:)) + sumsq(Theta2(:,2:end)(:)));
 
-%Delta1 = zeros(size(Theta1));  % 25x401
-%Delta2 = zeros(size(Theta2));  % 10x26
-%
+Delta1 = zeros(size(Theta1));  % 25x401
+Delta2 = zeros(size(Theta2));  % 10x26
+
 %for t = 1:m
 %    a_1 = X(t, :)';  % 401x1
 %    z_2 = z2(t, :)';  % 25x1
@@ -97,11 +97,11 @@ J += lambda / (2 * m) * (sumsq(Theta1(:,2:end)(:)) + sumsq(Theta2(:,2:end)(:)));
 %    Delta1 += delta_2 * a_1';
 %end
 
-delta_3 = a3 - Y;
-delta_2 = delta_3 * Theta2(:, 2:end) .* sigmoidGradient(z2);
+delta3 = a3 - Y;
+delta2 = delta3 * Theta2(:, 2:end) .* sigmoidGradient(z2);
 
-Delta2 = delta_3' * a2;
-Delta1 = delta_2' * X;
+Delta2 = delta3' * a2;
+Delta1 = delta2' * X;
 
 Theta1_grad = Delta1 ./ m;
 Theta2_grad = Delta2 ./ m;
